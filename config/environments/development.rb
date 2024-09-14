@@ -2,7 +2,6 @@ require_relative './common.rb'
 
 Rails.application.configure do
   APP_CONFIG ||= ConfigLoader.load_app_config
-
   # Settings specified here will take precedence over those in config/environment.rb
   config.consider_all_requests_local = true
   # In the development environment your application's code is reloaded on
@@ -122,4 +121,9 @@ Rails.application.configure do
 
   # List of classes deemed safe to be deserialized from YAML.
   config.active_record.yaml_column_permitted_classes = [Symbol, ActiveSupport::HashWithIndifferentAccess]
+  # ログレベルをデバッグに設定
+  config.log_level = :debug
+  # ログをファイルに出力
+  config.logger = ActiveSupport::Logger.new("log/development.log")
+  # その他の設定...
 end
